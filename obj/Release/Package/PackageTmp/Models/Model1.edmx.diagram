@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="25245831114e4aa1b734a6a77b03532d" Name="Diagram1">
+        <EntityTypeShape EntityType="PracticeaspDBModel.Agency" Width="1.5" PointX="6.625" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeaspDBModel.Purchase" Width="1.5" PointX="1" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeaspDBModel.Store" Width="1.5" PointX="3.625" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="PracticeaspDBModel.FK__Agency__Store_Id__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeaspDBModel.FK__Agency__Store_Id__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeaspDBModel.FK__Purchase__Agency__31EC6D26" />
+        <EntityTypeShape EntityType="PracticeaspDBModel.Account" Width="1.5" PointX="1.5" PointY="5.25" />
+        <EntityTypeShape EntityType="PracticeaspDBModel.Role" Width="1.5" PointX="6.875" PointY="5.375" />
+        <EntityTypeShape EntityType="PracticeaspDBModel.UserRoleMap" Width="1.5" PointX="4.125" PointY="5.25" />
+        <AssociationConnector Association="PracticeaspDBModel.FK__UserRoleM__UserI__4CA06362" />
+        <AssociationConnector Association="PracticeaspDBModel.FK__UserRoleM__RoleI__4D94879B" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

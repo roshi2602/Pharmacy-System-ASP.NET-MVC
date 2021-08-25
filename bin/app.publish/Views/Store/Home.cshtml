@@ -1,0 +1,255 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Practice4.Models.Store>
+
+@{
+    ViewBag.Title = "PHARMACY HOME PAGE";
+}
+@{
+    Layout = null;
+}
+<head>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="~/Agency/Home2/Home2.cshtml">Agencies List</a>
+    <a href="~/Purchase/Home3/Home3.cshtml">Purchase List</a>
+    <a>
+        @if (Session["username"] != null)
+        {
+
+            <a href="#" style="position: absolute; right: 50px;">welcome, @Session["username"]</a>
+
+        }
+    </a>
+    <a>
+        @if (Session["username"] != null)
+        {
+            @Html.Raw(TempData["msg"]) <!--alertbox-->
+            <script type="text/javascript">
+                function logout() {
+                    if (confirm("Are you sure to logout?"))
+                        return true;
+                    else
+                        return false;
+                }
+            </script>
+            @Html.ActionLink("Logout", "Logout", "Account", null, new { onclick = "return logout()" });
+
+
+        }
+        else
+        {
+            @Html.ActionLink("Login", "Login", "Account");
+        }
+    </a>
+    <a class="fa fa-bell" style="position: absolute; right: 190px;">
+        <span class="fa fa-comment"></span>
+        <span class="num">2</span>
+    </a>
+
+</div>
+
+<h2><center><u>PHARMACY-LIST</center></u></h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<center><table class="table table-bordered" width="250" ; border="5" ; height="100" ;></center>
+<tr>
+
+    <!--DisplayNameFor is not supported by IPageList-->
+    <th>
+        MedicineName
+    </th>
+    <th>
+        ExpiryData
+    </th>
+    <th>
+        ManufacturedDate
+    </th>
+    <th>
+        price
+    </th>
+    <th>
+        PharmEmail
+    </th>
+    <th>
+        PharmNumber
+    </th>
+    <th>
+        PharmWebsite
+    </th>
+    <th>
+        MedicinePhoto
+    </th>
+
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.MedicineName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpiryData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManufacturedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PharmEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PharmNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PharmWebsite)
+        </td>
+        <td>
+
+            @if (item.MedicinePhtot != null)
+            {
+
+                <img src="@Url.Content(item.MedicinePhtot)" alt="Image" />
+                <!--Url.Content is used when you wish to resolve a URL for any file or resource on your site and you would pass it the relative path:-->
+            }
+            else
+            {
+                <img src="@Url.Content(item.MedicineName)" />
+            }
+        </td>
+
+        <td>
+            <button class="one">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+
+
+            </button>
+        </td>
+
+    </tr>
+
+}
+
+
+</table>
+
+<style>
+    body {
+        color: black;
+        background-color: aliceblue;
+        font-size: 40px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    table {
+        width: 80%;
+    }
+
+
+    th {
+        height: 100px;
+        background-color: dodgerblue;
+    }
+
+    button {
+        font-size: 15px;
+        text-decoration: none;
+        color: black;
+        background-color: dodgerblue;
+        padding: 15px 20px;
+        border-radius: 4px;
+        font-weight: normal;
+        text-transform: uppercase;
+        transition: all 0.2s ease-in-out;
+    }
+
+        button:hover {
+            color: yellow;
+            box-shadow: red;
+        }
+
+    div .pagination {
+        display: inline-block;
+        float: right;
+        background-color: dodgerblue;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+</style>
+<div class="pagination">
+
+    @Html.PagedListPager(Model, page => Url.Action("Home", new { page }),
+PagedListRenderOptions.PageNumbersOnly)
+
+</div>
+<!-- rendering the Page numbers by using Html.PagedListPager method by passing the action method to redirect to with the current page and type of pagination to use.-->
+
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: darkslateblue;
+    }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+            .topnav a:hover {
+                background-color: deepskyblue;
+                color: black;
+            }
+
+            .topnav a.active {
+                background-color: black;
+                color: white;
+            }
+    a.fa-bell {
+        position: relative;
+        font-size: 35px;
+        color: yellow;
+        cursor: pointer;
+    }
+
+    span.fa-comment {
+        position: absolute;
+        font-size: 0.7em;
+        top: -4px;
+        color: red;
+        right: -4px;
+    }
+
+    span.num {
+        position: absolute;
+        font-size: 0.3em;
+        top: 1px;
+        color: #fff;
+        right: 2px;
+    }
+</style>

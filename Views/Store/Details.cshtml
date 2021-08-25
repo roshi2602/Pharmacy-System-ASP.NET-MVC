@@ -1,0 +1,126 @@
+﻿@model Practice4.Models.Store
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = null;
+}
+
+<h2>Details</h2>
+<link href="~/Content/Style.css" rel="stylesheet" />
+<center>
+    <div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MedicineName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MedicineName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExpiryData)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExpiryData)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ManufacturedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ManufacturedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PharmEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PharmEmail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PharmNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PharmNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PharmWebsite)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PharmWebsite)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MedicinePhtot)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MedicinePhtot)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <button>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
+            </button>
+        <button>
+            @Html.ActionLink("Back to List", "Home")
+        </button>
+    </p>
+</center>
+<style>
+    .dl-horizontal {
+        font-size: 22px;
+        font-family: Calibri;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        color: black;
+        padding: 12px 20px;
+    }
+
+    dt {
+        border: 2px solid black;
+        width: 300px;
+        background-color: chartreuse;
+    }
+
+    dd {
+        border: 2px solid black;
+        width: 300px;
+        background-color: antiquewhite;
+    }
+
+    button {
+        font-size: 10px;
+        text-decoration: none;
+        color: white;
+        background-color:darkorange;
+        padding: 15px 20px;
+        border-radius: 4px;
+        font-weight: normal;
+        text-transform: uppercase;
+        transition: all 0.2s ease-in-out;
+    }
+</style>

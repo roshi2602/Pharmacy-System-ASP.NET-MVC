@@ -1,0 +1,102 @@
+﻿@model Practice4.ViewModel.AccountView
+@{
+    ViewBag.Title = "Login";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+    <center>
+        <h1>(PHARMACY LOGIN)</h1>
+
+      
+        <p>
+            
+            @using (Html.BeginForm())
+            {
+
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+
+                        <input type="submit" value="login" class="btn btn-default" />
+                    </div>
+                </div>
+
+            }
+        </p>
+        <div>
+            <button>
+                @Html.ActionLink("SignUp", "SignUp", "Account")
+
+            </button>
+        </div>
+        <style>
+            body {
+                background-color: black;
+                color: black;
+                background-image: url(../../Image/pl.jpg);
+                background-size: cover;
+                position: center;
+                font-size: 18px;
+                font-family: Calibri;
+            }
+
+            button {
+                font-size: 15px;
+                text-decoration: none;
+                color: white;
+                background-color: dodgerblue;
+                padding: 15px 20px;
+                border-radius: 4px;
+                font-weight: normal;
+                text-transform: uppercase;
+                transition: all 0.2s ease-in-out;
+            }
+
+            input {
+                padding: 10px 26px;
+                color: black;
+                background-color: aqua;
+            }
+
+            h1 {
+                font-size: 50px;
+            }
+        </style>
+</body>
+    </center>
+</html>
+

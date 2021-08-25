@@ -1,0 +1,118 @@
+﻿@model Practice4.Models.Agency
+
+@{
+    ViewBag.Title = "Details";
+}
+@{ 
+    Layout = null;
+}
+
+<link href="~/Content/Style.css" rel="stylesheet" />
+<center>
+    <div>
+        <h1>Details</h1>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GrandTotal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GrandTotal)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsPaid)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsPaid)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Store.MedicineName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Store.MedicineName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Store1.MedicineName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Store1.MedicineName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <button>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+        </button>
+        <button>
+            @Html.ActionLink("Back to List", "Home2")
+        </button>
+    </p>
+</center>
+<style>
+    .dl-horizontal {
+        font-size: 22px;
+        font-family: Calibri;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        color: black;
+        padding: 12px 20px;
+    }
+
+    dt {
+        border: 2px solid black;
+        width: 300px;
+        background-color: chartreuse;
+    }
+
+    dd {
+        border: 2px solid black;
+        width: 300px;
+        background-color: antiquewhite;
+    }
+
+    button {
+        font-size: 10px;
+        text-decoration: none;
+        color: white;
+        background-color: darkorange;
+        padding: 15px 20px;
+        border-radius: 4px;
+        font-weight: normal;
+        text-transform: uppercase;
+        transition: all 0.2s ease-in-out;
+    }
+</style>

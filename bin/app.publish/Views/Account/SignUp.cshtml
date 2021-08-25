@@ -1,0 +1,111 @@
+﻿@model Practice4.ViewModel.AccountView
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+    <link href="~/Content/Style.css" rel="stylesheet" />
+</head>
+<body>
+    <h1 class="welcome"><center><u>PHARMACY STORE MANAGEMENT SYSTEM</u></center></h1>
+    <h3><center>(PHARMACY SIGNUP)</center></h3>
+    <center>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="SignUp" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    <div>
+        <button>   @Html.ActionLink("Login", "Login")</button>
+    </div>
+    <style>
+            body {
+                background-color: black;
+                color: black;
+                background-image: url(../../Image/ph.jpg);
+                background-size: cover;
+                position: center;
+                font-size: 18px;
+                font-family: Calibri;
+            }
+
+            input {
+                padding: 10px 26px;
+                color: black;
+                background-color: aqua;
+            }
+
+            h1 {
+                font-size: 50px;
+            }
+            button {
+                font-size: 15px;
+                text-decoration: none;
+                color: white;
+                background-color:chartreuse;
+                padding: 15px 20px;
+                border-radius: 4px;
+                font-weight: normal;
+                text-transform: uppercase;
+                transition: all 0.2s ease-in-out;
+            }
+        .welcome {
+            font-size: 50px;
+            color: blue;
+            text-align: center;
+            -webkit-animation: glow 1s ease-in-out infinite alternate;
+            -moz-animation: glow 1s ease-in-out infinite alternate;
+            animation: glow 1s ease-in-out infinite alternate;
+            color: black;
+            text-shadow: 0 0 7px #26ee4f, 0 0 10px #26ee4f, 0 0 21px #26ee4f, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+        }
+         
+
+
+
+    </style>
+    </center>
+
+
+
+</body>
+</html>

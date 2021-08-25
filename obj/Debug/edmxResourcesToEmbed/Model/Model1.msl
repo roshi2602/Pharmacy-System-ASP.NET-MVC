@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PracticeaspDBModelStoreContainer" CdmEntityContainer="PracticeaspDBEntities">
+    <EntitySetMapping Name="Stores">
+      <EntityTypeMapping TypeName="PracticeaspDBModel.Store">
+        <MappingFragment StoreEntitySet="Store">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+          <ScalarProperty Name="ExpiryData" ColumnName="ExpiryData" />
+          <ScalarProperty Name="ManufacturedDate" ColumnName="ManufacturedDate" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="PharmEmail" ColumnName="PharmEmail" />
+          <ScalarProperty Name="PharmNumber" ColumnName="PharmNumber" />
+          <ScalarProperty Name="PharmWebsite" ColumnName="PharmWebsite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

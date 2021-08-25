@@ -1,0 +1,171 @@
+﻿@model IEnumerable<Practice4.Models.Agency>
+
+@{
+    ViewBag.Title = "Home2";
+}
+@{
+    Layout = null;
+}
+<body>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="~/Store/Home/Home.cshtml">Medicine List</a>
+        <a href="~/Purchase/Home3/Home3.cshtml">Purchase List</a>
+
+        <a>
+            @if (Session["username"] != null)
+            {
+                <a href="#" style="position: absolute; right: 50px;">welcome, @Session["username"]</a>
+            }
+        </a>
+      
+        <a>
+            @if (Session["username"] != null)
+            {
+                <script type="text/javascript">
+                    function logout() {
+                        if (confirm("Are you sure to logout?"))
+                            return true;
+                        else
+                            return false;
+                    }
+                </script>
+                @Html.ActionLink("Logout", "Logout", "Account", null, new { onclick = "return logout()" });
+
+            }
+            else
+            {
+                @Html.ActionLink("Login", "Login", "Account");
+            }
+        </a>
+
+    </div>
+    <h2><center><u>AGENCIES LIST</center></u></h2>
+
+
+    <br /><br />
+    <center>  <table class="table table-bordered" width=80% ; border="5" ; height=100px;></center>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrandTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Store.MedicineName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrandTotal)
+            </td>
+            <td>
+                yes
+                @Html.RadioButtonFor(modelItem => item.IsPaid, "yes")
+                no
+                @Html.RadioButtonFor(modelItem => item.IsPaid, "no")
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Store.MedicineName)
+            </td>
+            <td>
+                <button>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                </button>
+            </td>
+        </tr>
+    }
+
+    </table>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:40px;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: darkslateblue;
+            font-size: 17px;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: dodgerblue;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: black;
+                    color: white;
+                }
+
+        body {
+            color: black;
+            background-color:aliceblue;
+            font-size: 30px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        th {
+            background-color: dodgerblue;
+            font-size: 25px;
+        }
+    h2{
+        font-size:30px;
+    }
+        button {
+            font-size: 15px;
+            text-decoration: none;
+            color: white;
+            background-color: dodgerblue;
+            padding: 15px 20px;
+            border-radius: 4px;
+            font-weight: normal;
+            text-transform: uppercase;
+            transition: all 0.2s ease-in-out;
+        }
+
+            button:hover {
+                color: yellow;
+                box-shadow: red;
+            }
+
+    </style>
+</body>

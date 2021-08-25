@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PracticeaspDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="GrandTotal" Type="Double" Nullable="false" />
+    <Property Name="IsPaid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Store_Id" Type="Int32" />
+    <NavigationProperty Name="Store" Relationship="Self.FK__Agency__Store_Id__2A4B4B5E" FromRole="Agency" ToRole="Store" />
+    <NavigationProperty Name="Store1" Relationship="Self.FK__Agency__Store_Id__2B3F6F97" FromRole="Agency" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="PurchaseId" />
+    </Key>
+    <Property Name="PurchaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BatchNo" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Agency_Id" Type="Int32" />
+    <NavigationProperty Name="Store" Relationship="PracticeaspDBModel.FK__Purchase__Agency__31EC6D26" FromRole="Purchase" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MedicineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExpiryData" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ManufacturedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="PharmEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PharmNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PharmWebsite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MedicinePhtot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Agencies" Relationship="Self.FK__Agency__Store_Id__2A4B4B5E" FromRole="Store" ToRole="Agency" />
+    <NavigationProperty Name="Agencies1" Relationship="Self.FK__Agency__Store_Id__2B3F6F97" FromRole="Store" ToRole="Agency" />
+    <NavigationProperty Name="Purchases" Relationship="PracticeaspDBModel.FK__Purchase__Agency__31EC6D26" FromRole="Store" ToRole="Purchase" />
+  </EntityType>
+  <Association Name="FK__Agency__Store_Id__2A4B4B5E">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Agency" Type="Self.Agency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Agency">
+        <PropertyRef Name="Store_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Agency__Store_Id__2B3F6F97">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Agency" Type="Self.Agency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Agency">
+        <PropertyRef Name="Store_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PracticeaspDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agencies" EntityType="Self.Agency" />
+    <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+    <EntitySet Name="Stores" EntityType="Self.Store" />
+    <AssociationSet Name="FK__Agency__Store_Id__2A4B4B5E" Association="Self.FK__Agency__Store_Id__2A4B4B5E">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Agency" EntitySet="Agencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Agency__Store_Id__2B3F6F97" Association="Self.FK__Agency__Store_Id__2B3F6F97">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Agency" EntitySet="Agencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Purchase__Agency__31EC6D26" Association="PracticeaspDBModel.FK__Purchase__Agency__31EC6D26">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Purchase" EntitySet="Purchases" />
+    </AssociationSet>
+    <EntitySet Name="Accounts" EntityType="PracticeaspDBModel.Account" />
+    <EntitySet Name="Roles" EntityType="PracticeaspDBModel.Role" />
+    <EntitySet Name="UserRoleMaps" EntityType="PracticeaspDBModel.UserRoleMap" />
+    <AssociationSet Name="FK__UserRoleM__UserI__4CA06362" Association="PracticeaspDBModel.FK__UserRoleM__UserI__4CA06362">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="UserRoleMap" EntitySet="UserRoleMaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRoleM__RoleI__4D94879B" Association="PracticeaspDBModel.FK__UserRoleM__RoleI__4D94879B">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRoleMap" EntitySet="UserRoleMaps" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK__Purchase__Agency__31EC6D26">
+    <End Type="PracticeaspDBModel.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="PracticeaspDBModel.Purchase" Role="Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="Agency_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ConfirmPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserRoleMaps" Relationship="PracticeaspDBModel.FK__UserRoleM__UserI__4CA06362" FromRole="Account" ToRole="UserRoleMap" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RId" />
+    </Key>
+    <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserRoleMaps" Relationship="PracticeaspDBModel.FK__UserRoleM__RoleI__4D94879B" FromRole="Role" ToRole="UserRoleMap" />
+  </EntityType>
+  <EntityType Name="UserRoleMap">
+    <Key>
+      <PropertyRef Name="MId" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="PracticeaspDBModel.FK__UserRoleM__UserI__4CA06362" FromRole="UserRoleMap" ToRole="Account" />
+    <NavigationProperty Name="Role" Relationship="PracticeaspDBModel.FK__UserRoleM__RoleI__4D94879B" FromRole="UserRoleMap" ToRole="Role" />
+    <Property Name="MId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="FK__UserRoleM__UserI__4CA06362">
+    <End Type="PracticeaspDBModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="PracticeaspDBModel.UserRoleMap" Role="UserRoleMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRoleMap">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRoleM__RoleI__4D94879B">
+    <End Type="PracticeaspDBModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="PracticeaspDBModel.UserRoleMap" Role="UserRoleMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RId" />
+      </Principal>
+      <Dependent Role="UserRoleMap">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
