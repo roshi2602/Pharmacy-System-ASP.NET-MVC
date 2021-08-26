@@ -14,14 +14,23 @@ namespace Practice4.Controllers
     {
         PracticeaspDBEntities1 db = new PracticeaspDBEntities1();
 
-
+        //used View model
         //search functionality applied
         [Authorize(Roles = "Chemist,Pharmacist,Manager")]
         public ActionResult Home3(string search)
         {
-            var v = db.Purchases.Where(i => i.Supplier.Contains(search)).ToList();
-            
-            return View(v);
+          
+             var vmodel = new List<PurchaseView>();
+            vmodel = db.Purchases.Where(i=>i.Supplier.Contains(search)).ToList().Select(i => new PurchaseView
+            {
+                PurchaseId = i.PurchaseId,
+                Supplier = i.Supplier,
+                BatchNo = i.BatchNo,
+                Quantity = i.Quantity,
+                Date = i.Date,
+                Agency_Id = i.Agency_Id
+            }).ToList();
+           return View(vmodel);
 
         }
 
@@ -72,34 +81,37 @@ namespace Practice4.Controllers
            
             //file name to be created   
             string strPDFFileName = string.Format("RoshiPdf"+"-"+"PurchaseList" + ".pdf");
+            //creating document to add some info
             Document doc = new Document();
             doc.SetMargins(0,0,0,0);
             //Create PDF Table with 6 columns  
             PdfPTable tableLayout = new PdfPTable(6);
+            //setting margins for left right top bottom
             doc.SetMargins(0 ,0,0,0);
 
             //Create PDF Table 
             PdfWriter.GetInstance(doc, stream).CloseStream = false;
+            //opening pdf
             doc.Open();
 
             //Add Content to PDF   
-            doc.Add(pdf(tableLayout));
+            doc.Add(pdf(tableLayout));  //private method made below
 
             // Closing the document  
             doc.Close();
 
-            byte[] byteInfo = stream.ToArray();
+            byte[] byteInfo = stream.ToArray(); //byte is 8 bit unsigned integer with range 0 to 255 and helps in performing operations
             stream.Write(byteInfo, 0, byteInfo.Length);
-            stream.Position = 0;
+            stream.Position = 0;  //setting the current position within the stream
 
 
             return File(stream, "application/pdf", strPDFFileName);
 
         }
-        public PdfPTable pdf(PdfPTable tableLayout)
+        public PdfPTable pdf(PdfPTable tableLayout)  //passing parameter
         {
             var x = db.Purchases.ToList();
-
+            //designing it
             tableLayout.AddCell(new PdfPCell(new Phrase("Creating Pdf using ItextSharp", new Font(Font.FontFamily.HELVETICA, 8, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
             {
                 Colspan = 12,
@@ -108,7 +120,7 @@ namespace Practice4.Controllers
                 HorizontalAlignment = Element.ALIGN_CENTER
             });
             //Add header  
-
+            //using private methods made below
             AddCellToHeader(tableLayout, "PurchaseId");
             AddCellToHeader(tableLayout, "Supplier");
             AddCellToHeader(tableLayout, "BatchNo");
@@ -117,6 +129,7 @@ namespace Practice4.Controllers
             AddCellToHeader(tableLayout, "Agency_Id");
             foreach (var i in x)
             {
+                //using private methods made below
                 AddCellToBody(tableLayout, i.PurchaseId.ToString());
                 AddCellToBody(tableLayout, i.Supplier);
                 AddCellToBody(tableLayout, i.BatchNo.ToString());
@@ -135,7 +148,7 @@ namespace Practice4.Controllers
             // Method to add single cell to the Header  
             private static void AddCellToHeader(PdfPTable tableLayout, string cellText)
             {
-
+            //designing it
                 tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 12, 1, iTextSharp.text.BaseColor.PINK)))
                 {
                     HorizontalAlignment = Element.ALIGN_LEFT, Padding = 5, BackgroundColor = new iTextSharp.text.BaseColor(0, 128, 0)
@@ -145,6 +158,7 @@ namespace Practice4.Controllers
             // Method to add single cell to the body  
             private static void AddCellToBody(PdfPTable tableLayout, string cellText)
             {
+            //designing it
                 tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 12, 1, iTextSharp.text.BaseColor.BLACK)))
                 {
                     HorizontalAlignment = Element.ALIGN_LEFT, Padding = 5, BackgroundColor = new iTextSharp.text.BaseColor(240, 128, 128)

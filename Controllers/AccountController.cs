@@ -82,13 +82,21 @@ namespace Practice4.Controllers
         [HttpGet]
         public ActionResult SignUp()
         {
-            return View();
+            AccountView aa = new AccountView();
+            return View(aa);
         }
 
         [HttpPost]
-        public ActionResult SignUp(Account x) //model binding
+        public ActionResult SignUp(AccountView x) //model binding
         {
-            db.Accounts.Add(x);
+            Account aa = new Account
+            {
+                
+                Username=x.Username,
+                Password=x.Password,
+                ConfirmPassword=x.ConfirmPassword
+            };
+            db.Accounts.Add(aa);
             db.SaveChanges();
             return RedirectToAction("Login");
         }

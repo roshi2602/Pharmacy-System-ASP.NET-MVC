@@ -1,6 +1,7 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
-@model IPagedList<Practice4.Models.Store>
+@model IPagedList<Practice4.ViewModel.StoreView>
+
 
 @{
     ViewBag.Title = "PHARMACY HOME PAGE";
@@ -230,6 +231,7 @@ PagedListRenderOptions.PageNumbersOnly)
                 background-color: black;
                 color: white;
             }
+
     a.fa-bell {
         position: relative;
         font-size: 35px;

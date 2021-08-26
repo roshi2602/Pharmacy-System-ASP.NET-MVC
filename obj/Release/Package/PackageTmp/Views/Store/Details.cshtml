@@ -7,9 +7,10 @@
     Layout = null;
 }
 
-<h2>Details</h2>
+
 <link href="~/Content/Style.css" rel="stylesheet" />
 <center>
+    <h2>Details</h2>
     <div>
 
         <dl class="dl-horizontal">
@@ -81,8 +82,8 @@
     </div>
     <p>
         <button>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
-            </button>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+        </button>
         <button>
             @Html.ActionLink("Back to List", "Home")
         </button>

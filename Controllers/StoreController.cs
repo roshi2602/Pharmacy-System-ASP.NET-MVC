@@ -6,7 +6,8 @@ using Practice4.ViewModel;
 using PagedList;
 using System.IO;
 using System.Web;
-
+using System.Collections.Generic;
+using System.Collections;
 namespace Practice4.Controllers
 {
     [Authorize]
@@ -14,19 +15,36 @@ namespace Practice4.Controllers
     {
 
         PracticeaspDBEntities1 db = new PracticeaspDBEntities1();
-        
+        //used Viewmodel
         //install pagedlist.mvc from nuget for pagination concept
         [Authorize(Roles = "Chemist, Pharmacist,Manager")]
-        public ActionResult Home(int page=3) //passed value typed parameter for 2 pages                                            //page number
+        public ActionResult Home(int page=3) //passed value typed parameter for 3 pages                                            //page number
         {
-           
             int recperpage = 3;  //pagesize
-            var ss = db.Stores.ToList().ToPagedList(page,recperpage);    //for pagination
+            var viewmodel = new List<StoreView>();
+ 
+            viewmodel = db.Stores.ToList().Select(x => new StoreView
+            {
+                Id = x.Id,
+                MedicineName = x.MedicineName,
+                ExpiryData = x.ExpiryData,
+                ManufacturedDate = x.ManufacturedDate,
+                price = x.price,
+                PharmEmail = x.PharmEmail,
+                PharmNumber = x.PharmNumber,
+                PharmWebsite = x.PharmWebsite,
+                MedicinePhtot = x.MedicinePhtot
+
+            }).ToList();
+            IPagedList<StoreView> yy = viewmodel.ToPagedList(recperpage, page);
+            //ToPagedList()=//for pagination
             //ToPagedList=list which loads data from data source and accepts 2 parameters -page nuber, page size
-            return View(ss);
-        }//go to Home.cshtml
+            return View(yy);
+          
 
+        }//go to Home.cshtml and type the code for pagination 
 
+     
 
         [HttpGet]  //actionVerbs
         [Authorize(Roles = "Chemist")]
@@ -113,6 +131,7 @@ namespace Practice4.Controllers
         public ActionResult Edit(int id)
         {
             var u = db.Stores.FirstOrDefault(x => x.Id == id);
+           
             return View(u);
         }
 
