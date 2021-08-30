@@ -44,6 +44,14 @@
           <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="SalesReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalesYear" Type="date" />
+          <Property Name="SalesMedicineId" Type="int" />
+        </EntityType>
         <EntityType Name="Store">
           <Key>
             <PropertyRef Name="Id" />
@@ -90,11 +98,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SalesRepo__Sales__5AEE82B9">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="SalesReport" Type="Self.SalesReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesReport">
+              <PropertyRef Name="SalesMedicineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PracticeaspDBModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Agency" EntityType="Self.Agency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesReport" EntityType="Self.SalesReport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoleMap" EntityType="Self.UserRoleMap" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Agency__Store_Id__34C8D9D1" Association="Self.FK__Agency__Store_Id__34C8D9D1">
@@ -104,6 +125,10 @@
           <AssociationSet Name="FK__Purchase__Agency__31EC6D26" Association="Self.FK__Purchase__Agency__31EC6D26">
             <End Role="Store" EntitySet="Store" />
             <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalesRepo__Sales__5AEE82B9" Association="Self.FK__SalesRepo__Sales__5AEE82B9">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="SalesReport" EntitySet="SalesReport" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -152,6 +177,7 @@
           <NavigationProperty Name="Agencies" Relationship="Self.FK__Agency__Store_Id__2A4B4B5E" FromRole="Store" ToRole="Agency" />
           <NavigationProperty Name="Agencies1" Relationship="Self.FK__Agency__Store_Id__2B3F6F97" FromRole="Store" ToRole="Agency" />
           <NavigationProperty Name="Purchases" Relationship="PracticeaspDBModel.FK__Purchase__Agency__31EC6D26" FromRole="Store" ToRole="Purchase" />
+          <NavigationProperty Name="SalesReports" Relationship="PracticeaspDBModel.FK__SalesRepo__Sales__5AEE82B9" FromRole="Store" ToRole="SalesReport" />
         </EntityType>
         <Association Name="FK__Agency__Store_Id__2A4B4B5E">
           <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
@@ -203,6 +229,11 @@
           <AssociationSet Name="FK__UserRoleM__RoleI__4D94879B" Association="PracticeaspDBModel.FK__UserRoleM__RoleI__4D94879B">
             <End Role="Role" EntitySet="Roles" />
             <End Role="UserRoleMap" EntitySet="UserRoleMaps" />
+          </AssociationSet>
+          <EntitySet Name="SalesReports" EntityType="PracticeaspDBModel.SalesReport" />
+          <AssociationSet Name="FK__SalesRepo__Sales__5AEE82B9" Association="PracticeaspDBModel.FK__SalesRepo__Sales__5AEE82B9">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="SalesReport" EntitySet="SalesReports" />
           </AssociationSet>
         </EntityContainer>
         <Association Name="FK__Purchase__Agency__31EC6D26">
@@ -266,6 +297,27 @@
             </Principal>
             <Dependent Role="UserRoleMap">
               <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SalesReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SalesYear" Type="DateTime" Precision="0" />
+          <Property Name="SalesMedicineId" Type="Int32" />
+          <NavigationProperty Name="Store" Relationship="PracticeaspDBModel.FK__SalesRepo__Sales__5AEE82B9" FromRole="SalesReport" ToRole="Store" />
+        </EntityType>
+        <Association Name="FK__SalesRepo__Sales__5AEE82B9">
+          <End Type="PracticeaspDBModel.Store" Role="Store" Multiplicity="0..1" />
+          <End Type="PracticeaspDBModel.SalesReport" Role="SalesReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesReport">
+              <PropertyRef Name="SalesMedicineId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -339,6 +391,15 @@
                 <ScalarProperty Name="MId" ColumnName="MId" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesReports">
+            <EntityTypeMapping TypeName="PracticeaspDBModel.SalesReport">
+              <MappingFragment StoreEntitySet="SalesReport">
+                <ScalarProperty Name="SalesMedicineId" ColumnName="SalesMedicineId" />
+                <ScalarProperty Name="SalesYear" ColumnName="SalesYear" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -20,6 +20,7 @@ namespace Practice4.Models
             this.Agencies = new HashSet<Agency>();
             this.Agencies1 = new HashSet<Agency>();
             this.Purchases = new HashSet<Purchase>();
+            this.SalesReports = new HashSet<SalesReport>();
         }
     
         public int Id { get; set; }
@@ -38,5 +39,7 @@ namespace Practice4.Models
         public virtual ICollection<Agency> Agencies1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchases { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesReport> SalesReports { get; set; }
     }
 }

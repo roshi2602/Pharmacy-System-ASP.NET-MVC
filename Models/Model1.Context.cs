@@ -31,5 +31,6 @@ namespace Practice4.Models
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<UserRoleMap> UserRoleMaps { get; set; }
+        public virtual DbSet<SalesReport> SalesReports { get; set; }
     }
 }

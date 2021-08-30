@@ -68,5 +68,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SalesReports">
+      <EntityTypeMapping TypeName="PracticeaspDBModel.SalesReport">
+        <MappingFragment StoreEntitySet="SalesReport">
+          <ScalarProperty Name="SalesMedicineId" ColumnName="SalesMedicineId" />
+          <ScalarProperty Name="SalesYear" ColumnName="SalesYear" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

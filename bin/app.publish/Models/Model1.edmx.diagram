@@ -16,6 +16,8 @@
         <EntityTypeShape EntityType="PracticeaspDBModel.UserRoleMap" Width="1.5" PointX="4.125" PointY="5.25" />
         <AssociationConnector Association="PracticeaspDBModel.FK__UserRoleM__UserI__4CA06362" />
         <AssociationConnector Association="PracticeaspDBModel.FK__UserRoleM__RoleI__4D94879B" />
+        <EntityTypeShape EntityType="PracticeaspDBModel.SalesReport" Width="1.5" PointX="3" PointY="8.25" />
+        <AssociationConnector Association="PracticeaspDBModel.FK__SalesRepo__Sales__5AEE82B9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

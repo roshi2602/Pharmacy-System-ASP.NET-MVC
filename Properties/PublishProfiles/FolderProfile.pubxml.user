@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\lenovo\source\practice\Practice4\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2021-08-26T07:07:32.4266549Z;False|2021-08-25T17:39:23.3989469+05:30;</History>
+    <History>True|2021-08-30T11:07:39.0793419Z;True|2021-08-30T16:20:36.8122739+05:30;True|2021-08-26T12:37:32.4266549+05:30;False|2021-08-25T17:39:23.3989469+05:30;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -45,10 +45,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/30/2013 23:45:20</publishTime>
     </File>
     <File Include="bin/Practice4.dll">
-      <publishTime>08/26/2021 12:37:30</publishTime>
+      <publishTime>08/30/2021 16:37:38</publishTime>
     </File>
     <File Include="bin/Practice4.pdb">
-      <publishTime>08/26/2021 12:37:30</publishTime>
+      <publishTime>08/30/2021 16:37:38</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>08/08/2018 05:38:48</publishTime>
@@ -294,7 +294,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/25/2021 12:55:50</publishTime>
     </File>
     <File Include="Models/Model1.edmx.diagram">
-      <publishTime>08/25/2021 16:00:15</publishTime>
+      <publishTime>08/30/2021 14:17:22</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>08/18/2021 12:49:32</publishTime>
@@ -351,13 +351,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/25/2021 16:29:59</publishTime>
     </File>
     <File Include="Views/Agency/Home2.cshtml">
-      <publishTime>08/25/2021 16:44:48</publishTime>
+      <publishTime>08/30/2021 15:55:39</publishTime>
     </File>
     <File Include="Views/Purchase/Create.cshtml">
       <publishTime>08/25/2021 16:25:37</publishTime>
     </File>
     <File Include="Views/Purchase/Home3.cshtml">
-      <publishTime>08/26/2021 10:57:02</publishTime>
+      <publishTime>08/30/2021 15:55:29</publishTime>
+    </File>
+    <File Include="Views/Sales/MyChart.cshtml">
+      <publishTime>08/30/2021 16:17:46</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>08/18/2021 12:49:17</publishTime>
@@ -378,7 +381,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/25/2021 16:27:52</publishTime>
     </File>
     <File Include="Views/Store/Home.cshtml">
-      <publishTime>08/26/2021 11:37:11</publishTime>
+      <publishTime>08/30/2021 15:54:50</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>08/18/2021 12:49:17</publishTime>

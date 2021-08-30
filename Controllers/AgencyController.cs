@@ -15,7 +15,7 @@ namespace Practice4.Controllers
             {
             var x = db.Agencies.Select(o => o); //select is used to select whole data
 
-                //apply switch case
+                //apply switch case to test the variable value
                 switch (sort)
                 {
                     case "descending":
@@ -43,7 +43,7 @@ namespace Practice4.Controllers
         [Authorize(Roles = "Manager")]
         public ActionResult Edit(int id)
         {
-            var x = db.Agencies.FirstOrDefault(y => y.Id == id);
+            var x = db.Agencies.FirstOrDefault(y => y.Id == id); //== is equality comparison operator,checks the value of 2 operator are equal
             
             return View(x);
         }

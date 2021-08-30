@@ -39,6 +39,7 @@ namespace Practice4.Controllers
             IPagedList<StoreView> yy = viewmodel.ToPagedList(recperpage, page);
             //ToPagedList()=//for pagination
             //ToPagedList=list which loads data from data source and accepts 2 parameters -page nuber, page size
+            // PagedList is a List which loads its data in chunks (pages) from a DataSource
             return View(yy);
           
 
@@ -68,7 +69,7 @@ namespace Practice4.Controllers
                     try
                     {
                         var fname = Path.GetFileName(Photo.FileName);
-                        var p = Path.Combine(Server.MapPath("~/Image/"), fname);
+                        var p = Path.Combine(Server.MapPath("~/Image/"), fname);//FILE path
                         Photo.SaveAs(p);
                         x.MedicinePhtot = p;
                     }
@@ -101,7 +102,9 @@ namespace Practice4.Controllers
         [Authorize(Roles = "Chemist")]
         public ActionResult Details(int id) //model binding=mapping through id
         {
+           
             var y = db.Stores.FirstOrDefault(x => x.Id == id);
+
             return View(y);
         }
 
