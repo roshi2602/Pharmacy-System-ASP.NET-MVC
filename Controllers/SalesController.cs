@@ -41,6 +41,7 @@ namespace Practice4.Controllers
             charts.Series.Add(ser);
             //  The name of the System.Web.UI.DataVisualization.Charting.Series to be added
             //create var for MemoryStream()
+            //Stream=data is read from files using stream, it is an extra layer bet application and file
             var stream = new MemoryStream();
             //memory stream deals with data coming from file
             //it is used as backing source of data u want to keep in memory

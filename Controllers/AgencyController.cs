@@ -60,6 +60,7 @@ namespace Practice4.Controllers
             x.GrandTotal =Convert.ToDouble(val["GrandTotal"]);
             x.IsPaid = val["IsPaid"];
             db.SaveChanges();
+       
             return RedirectToAction("Home2");
         }
     }

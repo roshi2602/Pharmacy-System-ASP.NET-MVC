@@ -79,7 +79,8 @@
             @Html.AntiForgeryToken()
 
     <div class="form-actions no-color">
-        <button>         <input type="submit" value="Delete" class="btn btn-default" /> </button>
+        <button><input type="submit" value="Delete" class="btn btn-default"> </button>
+                            @Html.Raw(TempData["msg"])
         <br /><br />
         <button>      @Html.ActionLink("Back to List", "Home")</button>
     </div>
@@ -110,7 +111,7 @@
     button {
         font-size: 10px;
         text-decoration: none;
-        color: white;
+        color:black;
         background-color: chartreuse;
         padding: 15px 20px;
         border-radius: 4px;

@@ -91,6 +91,7 @@ namespace Practice4.Controllers
                      };    
                 db.Stores.Add(s);
                 db.SaveChanges();
+                TempData["msg"] = "<script>alert('store data created!!');</script>";  //message box after creating
                 return RedirectToAction("Home");
                 
             }
@@ -103,7 +104,7 @@ namespace Practice4.Controllers
         public ActionResult Details(int id) //model binding=mapping through id
         {
            
-            var y = db.Stores.FirstOrDefault(x => x.Id == id);
+            var y = db.Stores.FirstOrDefault(x => x.Id == id);  //comparing values using equality comparison opertor
 
             return View(y);
         }
@@ -125,6 +126,7 @@ namespace Practice4.Controllers
             var r = db.Stores.FirstOrDefault(x => x.Id == id);
             db.Stores.Remove(r);
             db.SaveChanges();
+            TempData["msg"] = "<script>alert('store data deleted!!');</script>";
             return RedirectToAction("Home");
         }
 
@@ -156,7 +158,9 @@ namespace Practice4.Controllers
             u.price =Convert.ToDouble(values["price"]);
             
             db.SaveChanges();
-         return   RedirectToAction("Home");
+            TempData["msg"] = "<script>alert('store data changed!!');</script>";
+    
+            return   RedirectToAction("Home");
            
         }
       

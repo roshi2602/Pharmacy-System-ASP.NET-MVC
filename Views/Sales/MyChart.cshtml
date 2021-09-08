@@ -7,10 +7,19 @@
 <!DOCTYPE html>
 <body>
 
+
     <img id="chart" src="@Url.Action("MyChart")" />
+
+    <!--Url.Action =generates the url for the action method-->
+    <!--Url.Action can also be applied
+        Url.Content is used when you wish to resolve a URL for any file or resource on your site and you would pass it the relative path:  -->
+    @RenderSection("chart", false)
     <style>
         #chart {
-            background-color: white;
+            color: antiquewhite;
+            background-color: aquamarine;
         }
+        
+      
     </style>
 </body>

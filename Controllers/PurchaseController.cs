@@ -60,6 +60,7 @@ namespace Practice4.Controllers
                 };
                 db.Purchases.Add(ps);
                 db.SaveChanges();
+               
                 return RedirectToAction("Home3");
             }
             return View();
@@ -78,7 +79,8 @@ namespace Practice4.Controllers
         public FileResult Export()
         {
             MemoryStream stream = new MemoryStream();
-           
+            //Stream=data is read from files using stream, it is an extra layer bet application and file
+
             //file name to be created   
             string strPDFFileName = string.Format("RoshiPdf"+"-"+"PurchaseList" + ".pdf");
             //creating document to add some info
